@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+lxml
+streamlit
+schedule
+python-dotenv
+pandas
+matplotlib
+pytest

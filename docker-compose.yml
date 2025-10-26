@@ -1,0 +1,21 @@
+# Docker Compose for Price Scraper
+version: '3.8'
+
+services:
+  scraper:
+    build: .
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    command: python3 run_scraper.py
+
+  dashboard:
+    build: .
+    env_file: .env
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    command: python3 -m streamlit run streamlit_app.py --server.address 0.0.0.0
